@@ -1,0 +1,7 @@
+Shorter Python scripts
+
+Shorter Python (Python 2.x) scripts, main focus on algorithms
+(sortin, searching...). Names of the files should give away the function of the
+script, and comments inside will clarify the use further.
+
+This repo is growing daily.
