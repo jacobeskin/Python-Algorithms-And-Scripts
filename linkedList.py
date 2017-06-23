@@ -66,7 +66,7 @@ class linkedList(object):
 
         # If only one node in list
         if self.size==1:
-            temp_node = self.head
+            self.head = None
             self.size -= 1
             return
 
@@ -105,6 +105,11 @@ class linkedList(object):
     # Method for printing out the list
     def printList(self):
 
+        # If list is empty
+        if list.size==0:
+            print "List is empty"
+            return
+
         temp_node = self.head
         while temp_node!=None:
             print(temp_node.data)
@@ -114,21 +119,21 @@ class linkedList(object):
 
 
 #------------- For testing purposes--------
-#list = linkedList()
+list = linkedList()
 #print "\n Adding nodes 0 1 2 3 4 to four nodes and printing the list. \n" 
 #list.addNode(0,0)
-#list.addNode(1,0)
+list.addNode(1,0)
 #list.addNode(2,2)
 #list.addNode(3,0)
 #list.addNode(4,list.size)
 #print "\n List size:", list.size, "\n"
-#list.printList()
-#print "\n Deleting some nodes. \n"
-#list.delNode(0)
+list.printList()
+print "\n Deleting some nodes. \n"
+list.delNode(0)
 #list.delNode(1)
 #list.delNode(3)
 #list.delNode(list.size)
-#list.printList()
+list.printList()
 #print "\n List size now:", list.size, "\n"
 
 
