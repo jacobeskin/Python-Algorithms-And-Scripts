@@ -1,5 +1,13 @@
 # Linked list module. It has two classes, the Node-class, which is what it
-# sounds like, and the linkedList-class. Rest will be explained in the comments.
+# sounds like, and the linkedList-class.
+#
+# Linked list object has the following attributes and methods:
+# self.size                      length of the list
+# addNode(data, n)               add data to postion n
+# delNode(n)                     delete node n
+# isPalindrome()                 checks if the current list is palindrome
+# printList()                    prints the list to terminal
+
 
 import sys
 
@@ -90,7 +98,7 @@ class linkedList(object):
                 
                 self.size -= 1 # The list shrinks
                 return
-                
+
         # If the last node is to be deleted
         if n==list.size:
             temp_node = self.head
@@ -102,6 +110,33 @@ class linkedList(object):
             return
 
 
+    # Method for checking if list is palindrome. 
+    def isPalindrome(self):
+
+        # Need to variables, fast goes throug the list twice as fast as slow
+        fast, slow = self.head, self.head
+        rev = Node(None, None) # This will house the revesed porition
+
+        # Run to the middle of the list
+        while fast and fast.next_n:
+            fast = fast.next_n.next_n
+            # Always add the new node to the front of rev. Also advane slow
+            rev, rev.next_n, slow = slow, rev, slow.next_n
+
+        # If the list is odd
+        if fast:
+            slow = slow.next_n
+
+        # Compare values from rev and the latter half of the list
+        while slow:
+            if slow.data!=rev.data:
+                return False
+            else:
+                slow, rev = slow.next_n, rev.next_n
+
+        # If no exeptions are raised, return True
+        return True
+        
     # Method for printing out the list
     def printList(self):
 
@@ -119,6 +154,8 @@ class linkedList(object):
 
 
 #------------- For testing purposes--------
+
+# Testing adding and deleting nodes
 #list = linkedList()
 #print "\n Adding nodes 0 1 2 3 4 to four nodes and printing the list. \n" 
 #list.addNode(0,0)
@@ -127,6 +164,7 @@ class linkedList(object):
 #list.addNode(3,0)
 #list.addNode(4,list.size)
 #print "\n List size:", list.size, "\n"
+#print "Printing list:\n"
 #list.printList()
 #print "\n Deleting some nodes. \n"
 #list.delNode(0)
@@ -135,6 +173,29 @@ class linkedList(object):
 #list.delNode(list.size)
 #list.printList()
 #print "\n List size now:", list.size, "\n"
+
+# Testing palindrome method
+
+#print "\n Is list palindrome?\n"
+#if list.isPalindrome():
+#    print "Yes it is!\n"
+#else:
+#    print "No it's not!\n"
+
+#print "Make new list:\n"
+#list2 = linkedList()
+#list2.addNode(0,0)
+#list2.addNode(1,1)
+#list2.addNode(2,2)
+#list2.addNode(1,3)
+#list2.addNode(0,4)
+#list2.printList()
+#print "\n Is this list palindrome?\n"
+#if list2.isPalindrome():
+#    print "Yes it is!\n"
+#else:
+#    print "No it's not!\n"
+
 
 
 
